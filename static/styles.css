@@ -53,6 +53,18 @@ header {
   flex-direction: column;
 }
 
+.user-bubble {
+  align-self: flex-end; /* Align user messages (questions) to the right */
+  background: linear-gradient(89deg, #47b4d5, #29449d);
+  color: #fff;
+}
+
+.robot-bubble {
+  align-self: flex-start; /* Align robot messages (answers) to the left */
+  background-color: #fff;
+  color: #333;
+}
+
 .chat-bubble {
   max-width: 70%;
   margin-bottom: 10px;

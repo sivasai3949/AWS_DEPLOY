@@ -77,6 +77,13 @@
             optionsContainer.innerHTML = optionsHtml;
             chatContainer.appendChild(optionsContainer);
             chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to bottom of chat
+
+            // Add event listeners for options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    sendOption(option.textContent);
+                });
+            });
         }
 
         function sendOption(option) {
