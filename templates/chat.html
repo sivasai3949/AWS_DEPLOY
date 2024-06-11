@@ -9,15 +9,16 @@
 <body>
     <div class="chatbot-container">
         <header>
-            <h1 class="heading"><span>E</span><span>D</span><span>X</span><span>B</span><span>O</span><span>T</span></h1>
-            <img src="{{ url_for('static', filename='Chatbot.gif') }}" alt="Robot Icon" class="robot-icon">
+            <img src="{{ url_for('static', filename='nav_logo.svg') }}" alt="logo Icon" class="logo-icon">
+            <img src="{{ url_for('static', filename='Chatbot3.gif') }}" alt="Robot Icon" class="robot-icon">
         </header>
         <div class="chat-container" id="chat-container">
             <div class="chat">
                 <div class="chat-bubble robot">Hi there! How can I assist you today?</div>
+                <div class="chat-bubble robot">{{ initial_question }}</div>
             </div>
         </div>
-        <div class="input-container">
+        <div class="input-container" id="input-container">
             <input type="text" id="user-input" placeholder="Type your message...">
             <button id="send-btn">Send</button>
         </div>
@@ -47,8 +48,13 @@
             })
             .then(response => response.text())
             .then(data => {
-                appendChat("user", userInput);
-                appendChat("robot", data);
+                if (data.includes('<ul')) {
+                    appendChat("user", userInput);
+                    displayOptions(data);
+                } else {
+                    appendChat("user", userInput);
+                    appendChat("robot", data);
+                }
             })
             .catch(error => console.error('Error:', error));
         }
@@ -62,6 +68,31 @@
             chatContainer.appendChild(chatBubble);
             document.getElementById('user-input').value = ''; // Clear input field after sending
             chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to bottom of chat
+        }
+
+        function displayOptions(optionsHtml) {
+            var chatContainer = document.getElementById('chat-container');
+            var optionsContainer = document.createElement('div');
+            optionsContainer.classList.add('chat-bubble', 'robot');
+            optionsContainer.innerHTML = optionsHtml;
+            chatContainer.appendChild(optionsContainer);
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to bottom of chat
+        }
+
+        function sendOption(option) {
+            appendChat("user", option);
+            fetch('/process_chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'user_input=' + encodeURIComponent(option)
+            })
+            .then(response => response.text())
+            .then(data => {
+                appendChat("robot", data);
+            })
+            .catch(error => console.error('Error:', error));
         }
     </script>
 </body>

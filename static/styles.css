@@ -1,6 +1,8 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-image: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150521683.jpg?size=626&ext=jpg&uid=R151379934&ga=GA1.1.1093312386.1717396095&semt=ais_user'); 
+  background-size: cover; 
+  background-position: center;
   margin: 0;
   padding: 0;
 }
@@ -8,10 +10,11 @@ body {
 .chatbot-container {
   max-width: 500px;
   margin: 50px auto;
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(252, 254, 255, 0.1);
   padding: 20px;
+  border: 3px solid #4ab6f5;
 }
 
 header {
@@ -19,21 +22,17 @@ header {
   align-items: center;
 }
 
-.heading {
-  margin: 0;
-  font-size: 36px;
-  font-family: 'Times New Roman', serif;
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-  color: transparent; /* Make the text transparent */
-  -webkit-background-clip: text; /* For WebKit-based browsers */
-  background-clip: text; /* Standard property for other browsers */
+.logo-icon {
+  margin-right: 10px;
+  margin-top: -40px; /* Adjust this value to move the logo upwards */
 }
 
-/* Add span styling for each letter */
-
 .robot-icon {
-  width: 40px;
-  margin-left: 10px;
+  width: 90px;
+  height: 80px;
+  margin-left: -10px;
+  margin-bottom: 20px;
+  margin-top: -20px;
 }
 
 /* Adjust the size of the chatbot image */
@@ -59,17 +58,18 @@ header {
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 20px;
+  border: 3px solid #4ab6f5;
 }
 
 .user {
   align-self: flex-end;
-  background-color: #007bff;
+  background: linear-gradient(89deg, #47b4d5, #29449d);
   color: #fff;
 }
 
 .robot {
   align-self: flex-start;
-  background-color: #f0f0f0;
+  background-color: #fff;
   color: #333;
 }
 
@@ -81,16 +81,39 @@ header {
 input[type="text"] {
   flex: 1;
   padding: 10px;
-  border: none;
+  border: 2px solid black; 
   border-radius: 20px;
   margin-right: 10px;
 }
 
+input[type="text"]::placeholder {
+  color: black; /* Set placeholder text color to black */
+}
+
 #send-btn {
-  background-color: #007bff;
+  background: linear-gradient(89deg, #47b4d5, #29449d);
   color: #fff;
   border: none;
   border-radius: 20px;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.option-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  background: linear-gradient(89deg, #47b4d5, #29449d);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  text-align: left;
 }
